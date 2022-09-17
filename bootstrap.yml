@@ -1,0 +1,13 @@
+- name: Bootstrap development environment
+  hosts: localhost
+
+- roles:
+    - base
+    - bin
+    - misc
+    - player
+    - terminal
+    - window-manager
+    - keyboard
+    - editor
+    - browser
