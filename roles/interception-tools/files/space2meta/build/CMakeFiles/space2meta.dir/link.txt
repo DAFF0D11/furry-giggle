@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic CMakeFiles/space2meta.dir/space2meta.c.o -o space2meta 

@@ -1,0 +1,7 @@
+/home/daf/fig/keyboard/space2meta/build/CMakeFiles/space2meta.dir
+/home/daf/fig/keyboard/space2meta/build/CMakeFiles/edit_cache.dir
+/home/daf/fig/keyboard/space2meta/build/CMakeFiles/rebuild_cache.dir
+/home/daf/fig/keyboard/space2meta/build/CMakeFiles/list_install_components.dir
+/home/daf/fig/keyboard/space2meta/build/CMakeFiles/install.dir
+/home/daf/fig/keyboard/space2meta/build/CMakeFiles/install/local.dir
+/home/daf/fig/keyboard/space2meta/build/CMakeFiles/install/strip.dir

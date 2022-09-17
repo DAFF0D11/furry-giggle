@@ -1,0 +1,3 @@
+- name: Setup Bin
+  debug: msg="symlink bin"
+  when: ansible_facts['os_family'] == "RedHat"

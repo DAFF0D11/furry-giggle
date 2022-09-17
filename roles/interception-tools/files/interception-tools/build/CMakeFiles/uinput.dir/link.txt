@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -rdynamic CMakeFiles/uinput.dir/uinput.cpp.o -o uinput  -levdev -ludev -lyaml-cpp 
