@@ -30,7 +30,7 @@
   shell: cmake --install build
   args:
     chdir: "{{ user_home }}/fig/roles/interception-tools/files/interception-tools"
-  when: not stat_result.stat.exists
+  when: not check_intercept.stat.exists
 
 - name: Check for dual-function-keys
   stat:
@@ -94,22 +94,22 @@
 - name: Install udevmon settings
   become: true
   shell: cp $HOME/fig/roles/interception-tools/udevmon.yaml /etc/udevmon.yaml
-  when: not stat_result.stat.exists
+  when: not check_intercept.stat.exists
 
 - name: Install udevmon service
   become: true
   shell: cp $HOME/fig/roles/interception-tools/udevmon.service /etc/systemd/system/udevmon.service
-  when: not stat_result.stat.exists
+  when: not check_intercept.stat.exists
 
 - name: Enable udevmon service
   become: true
   shell: systemctl enable --now udevmon
-  when: not stat_result.stat.exists
+  when: not check_intercept.stat.exists
 
 - name: Start udevmon service
   become: true
   shell: systemctl restart udevmon
-  when: not stat_result.stat.exists
+  when: not check_intercept.stat.exists
 
 # - name: Reapply xset
 #   shell: xset r rate 300 28
