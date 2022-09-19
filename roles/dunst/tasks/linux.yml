@@ -1,3 +1,8 @@
+- name: Create ~/.config directory
+  file:
+    path: "/home/{{ ansible_env.USER }}/.config"
+    state: directory
+
 - name: Install dunst package
   become: true
   dnf:

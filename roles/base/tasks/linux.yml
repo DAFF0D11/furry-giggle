@@ -2,6 +2,7 @@
   become: true
   dnf:
     name:
+      # Where is ffmpeg and ffmpegthumbnailer??
       - dnf-plugins-core
       - NetworkManager
       - NetworkManager-tui
@@ -16,17 +17,6 @@
       - pavucontrol
       - pipewire
       - alsa-utils
-      # - mpv
-      # - mpv-mpris
-      # - playerctl
-      # - terminus-fonts
-      # - gdouros-symbola-fonts
-      # - google-roboto-mono-fonts
-      # - python3-pip
-      # - zsh
-      # - lxappearance
-      # - dunst
-      # - ripgrep
       - curl
       - fzf
       - jq
