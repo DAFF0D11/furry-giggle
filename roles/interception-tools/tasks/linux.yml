@@ -33,6 +33,13 @@
   when: not stat_result.stat.exists
 
 
+- name: Make Dual-Function-Keys
+  become: true
+  shell: make
+  args:
+    chdir: "{{ user_home }}/fig/roles/interception-tools/files/dual-function-keys"
+  when: not stat_result.stat.exists
+
 - name: Install Dual-Function-Keys
   become: true
   shell: make install
