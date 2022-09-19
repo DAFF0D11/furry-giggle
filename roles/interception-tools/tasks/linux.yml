@@ -24,7 +24,6 @@
     chdir: "{{ user_home }}/fig/roles/interception-tools/files/interception-tools"
   when: not check_intercept.stat.exists
 
-
 - name: Install interceptor
   become: true
   shell: cmake --install build
@@ -35,21 +34,21 @@
 - name: Check for dual-function-keys
   stat:
     path: /usr/local/bin/dual-function-keys
-  register: check_dual-function-keys
+  register: check_dualfunctionkeys
 
 - name: Make Dual-Function-Keys
   become: true
   shell: make
   args:
     chdir: "{{ user_home }}/fig/roles/interception-tools/files/dual-function-keys"
-  when: not check_dual-function-keys.stat.exists
+  when: not check_dualfunctionkeys.stat.exists
 
 - name: Install Dual-Function-Keys
   become: true
   shell: make install
   args:
     chdir: "{{ user_home }}/fig/roles/interception-tools/files/dual-function-keys"
-  when: not check_dual-function-keys.stat.exists
+  when: not check_dualfunctionkeys.stat.exists
 
 - name: Check for space2meta
   stat:
