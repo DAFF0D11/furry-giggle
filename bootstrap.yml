@@ -3,7 +3,7 @@
   roles:
     - base
     # - interception-tools
-    # - emacs
+    - emacs
     - bin
     - dunst
     - foot

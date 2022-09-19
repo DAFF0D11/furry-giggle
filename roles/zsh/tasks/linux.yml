@@ -20,7 +20,8 @@
     path: "/home/{{ ansible_env.USER }}/.config/zsh"
     state: link
 
-- name: Set sehll to zsh
+- name: Set default shell to zsh
   ansible.builtin.command: usermod --shell /usr/bin/zsh {{ ansible_env.USER }}
   become: true
   changed_when: false
+  when: ansible_distribution == "Fedora"

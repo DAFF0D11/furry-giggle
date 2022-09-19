@@ -25,7 +25,8 @@
   become: true
   dnf:
     name:
-      # Where is ffmpeg and ffmpegthumbnailer??
+      - ffmpeg
+      - ffmpegthumbnailer
       - dnf-plugins-core
       - NetworkManager
       - NetworkManager-tui
