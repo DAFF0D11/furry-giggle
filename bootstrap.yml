@@ -1,16 +1,17 @@
 - name: Setup local environment
   hosts: localhost
   roles:
-    - base
-    # - interception-tools
-    - emacs
-    - bin
-    - dunst
-    - foot
-    - imv
-    - misc
-    - mpv
-    - qutebrowser
-    - sway
-    - waybar
-    - zsh
+    - setup
+    # - base
+    - interception-tools
+    # - emacs
+    # - bin
+    # - dunst
+    # - foot
+    # - imv
+    # - misc
+    # - mpv
+    # - qutebrowser
+    # - sway
+    # - waybar
+    # - zsh

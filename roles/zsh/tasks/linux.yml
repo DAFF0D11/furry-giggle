@@ -10,18 +10,18 @@
 
 - name: Symlink zshrc
   file:
-    src: "{{ ansible_env.PWD }}/roles/zsh/files/zshrc"
-    path: "/home/{{ ansible_env.USER }}/.zshrc"
+    src: "{{ config_dir }}/roles/zsh/files/zshrc"
+    path: "{{ user_home }}/.zshrc"
     state: link
 
 - name: Symlink zsh config
   file:
-    src: "{{ ansible_env.PWD }}/roles/zsh/files/zsh"
-    path: "/home/{{ ansible_env.USER }}/.config/zsh"
+    src: "{{ config_dir }}/roles/zsh/files/zsh"
+    path: "{{ user_home }}/.config/zsh"
     state: link
 
 - name: Set default shell to zsh
-  ansible.builtin.command: usermod --shell /usr/bin/zsh {{ ansible_env.USER }}
+  ansible.builtin.command: usermod --shell /usr/bin/zsh {{ user }}
   become: true
   changed_when: false
   when: ansible_distribution == "Fedora"

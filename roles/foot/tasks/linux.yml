@@ -8,6 +8,6 @@
 
 - name: Symlink foot config
   file:
-    src: "{{ ansible_env.PWD }}/roles/foot/files/foot"
-    path: "/home/{{ ansible_env.USER }}/.config/foot"
+    src: "{{ config_dir }}/roles/foot/files/foot"
+    path: "{{ user_home }}/.config/foot"
     state: link

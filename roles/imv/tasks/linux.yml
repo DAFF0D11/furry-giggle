@@ -8,6 +8,6 @@
 
 - name: Symlink imv
   file:
-    src: "{{ ansible_env.PWD }}/roles/imv/files/imv"
-    path: "/home/{{ ansible_env.USER }}/.config/imv"
+    src: "{{ config_dir }}/roles/imv/files/imv"
+    path: "{{ user_home }}/.config/imv"
     state: link

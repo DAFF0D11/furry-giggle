@@ -10,6 +10,6 @@
 
 - name: Symlink mpv directory
   file:
-    src: "{{ ansible_env.PWD }}/roles/mpv/files/mpv"
-    path: "/home/{{ ansible_env.USER }}/.config/mpv"
+    src: "{{ config_dir }}/roles/mpv/files/mpv"
+    path: "{{ user_home }}/.config/mpv"
     state: link

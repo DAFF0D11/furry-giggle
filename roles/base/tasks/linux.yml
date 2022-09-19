@@ -1,11 +1,11 @@
-- name: Importing (free) key
+- name: RPMF Importing (free) key
   become: true
   ansible.builtin.rpm_key:
     state: present
     key: https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020
   when: ansible_distribution == "Fedora"
 
-- name: Importing (non-free) key
+- name: RPMF Importing (non-free) key
   become: true
   ansible.builtin.rpm_key:
     state: present

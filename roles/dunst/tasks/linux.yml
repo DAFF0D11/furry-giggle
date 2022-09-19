@@ -1,8 +1,3 @@
-- name: Create ~/.config directory
-  file:
-    path: "/home/{{ ansible_env.USER }}/.config"
-    state: directory
-
 - name: Install dunst package
   become: true
   dnf:
@@ -13,6 +8,6 @@
 
 - name: Symlink dunst config
   file:
-    src: "{{ ansible_env.PWD }}/roles/dunst/files/dunst"
-    path: "/home/{{ ansible_env.USER }}/.config/dunst"
+    src: "{{ config_dir }}/roles/dunst/files/dunst"
+    path: "{{ user_home }}/.config/dunst"
     state: link

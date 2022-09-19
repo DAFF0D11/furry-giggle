@@ -1,7 +1,7 @@
 - name: Symlink user-dirs.dir
   file:
-    src: "{{ ansible_env.PWD }}/roles/misc/files/user-dirs.dirs"
-    path: "/home/{{ ansible_env.USER }}/.config/user-dirs.dirs"
+    src: "{{ config_dir }}/roles/misc/files/user-dirs.dirs"
+    path: "{{ user_home }}/.config/user-dirs.dirs"
     state: link
 
 - name: Install ripgrep package
@@ -14,6 +14,6 @@
 
 - name: Symlink rgignore
   file:
-    src: "{{ ansible_env.PWD }}/roles/misc/files/rgignore"
-    path: "/home/{{ ansible_env.USER }}/.rgignore"
+    src: "{{ config_dir }}/roles/misc/files/rgignore"
+    path: "{{ user_home }}/.rgignore"
     state: link
