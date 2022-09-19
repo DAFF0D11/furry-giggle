@@ -1,4 +1,0 @@
-/usr/local/bin/udevmon
-/usr/local/bin/intercept
-/usr/local/bin/uinput
-/usr/local/bin/mux

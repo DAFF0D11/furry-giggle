@@ -1,7 +1,0 @@
-/home/daf/fig/keyboard/caps2esc/build/CMakeFiles/caps2esc.dir
-/home/daf/fig/keyboard/caps2esc/build/CMakeFiles/edit_cache.dir
-/home/daf/fig/keyboard/caps2esc/build/CMakeFiles/rebuild_cache.dir
-/home/daf/fig/keyboard/caps2esc/build/CMakeFiles/list_install_components.dir
-/home/daf/fig/keyboard/caps2esc/build/CMakeFiles/install.dir
-/home/daf/fig/keyboard/caps2esc/build/CMakeFiles/install/local.dir
-/home/daf/fig/keyboard/caps2esc/build/CMakeFiles/install/strip.dir

@@ -1,1 +1,0 @@
-/usr/bin/cc -O3 -DNDEBUG -rdynamic CMakeFiles/caps2esc.dir/caps2esc.c.o -o caps2esc 
