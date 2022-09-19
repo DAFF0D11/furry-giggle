@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# Tools for DK window manager
+
+get_win_id(){
+
+	dkcmd status num=1 type=full | tr -d "\t" | grep "^0x0" | grep "$1" | cut -d " " -f1
+}
+
+focus_wmctrl(){
+	# DKWM doesn't activate windows when using 'dkcmd win window_id focus'
+	# Therefore we must use wmctrl to focus and activate (switch to)
+	# It is crucial to use the -i flag before the -a flag in wmctrl
+
+	wmctrl -i -a $(get_win_id "$1")
+
+	# P.S. When switching to the window you're already focusing, the active
+	# border turns to unfocused, even though your input is still focused.
+	# Not an issue, just a strange behavior.
+}
+
+# focus(){
+# 	# Focus window by class name
+# 	FOCUS=$(get_win_id "$1")
+# 	dkcmd win "$FOCUS" focus
+# }
+
+toggle_mono(){
+	# Toggle between rtile and mono layouts
+	LAYOUT=$(dkcmd status num=1 type=layout)
+	if [ "$LAYOUT" = 'rtile' ]; then
+		dkcmd set layout mono
+	else
+		dkcmd set layout rtile
+	fi;
+}
+
+case "$1" in
+	# focus) focus "$2" ;;
+	focuswm) focus_wmctrl "$2" ;;
+	togglemono) toggle_mono ;;
+esac

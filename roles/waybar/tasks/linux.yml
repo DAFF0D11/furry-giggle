@@ -1,3 +1,14 @@
-- name: print facts
-  debug: msg="yas redhat/fedora'{{ ansible_os_family }}'"
-  when: ansible_facts['os_family'] == "RedHat"
+- name: Install waybar package
+  become: true
+  dnf:
+    name:
+      - waybar
+    state: present
+  when: ansible_distribution == "Fedora"
+
+- name: Symlink waybar
+  file:
+    src: "{{ ansible_env.PWD }}/roles/waybar/files/waybar"
+    # path: "/home/{{ ansible_env.USER }}/.config/dunst/dunstrc"
+    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/waybar"
+    state: link

@@ -1,3 +1,14 @@
-- name: print facts
-  debug: msg="yas redhat/fedora'{{ ansible_os_family }}'"
-  when: ansible_facts['os_family'] == "RedHat"
+- name: Install sway package
+  become: true
+  dnf:
+    name:
+      - sway
+    state: present
+  when: ansible_distribution == "Fedora"
+
+- name: Symlink sway
+  file:
+    src: "{{ ansible_env.PWD }}/roles/sway/files/sway"
+    # path: "/home/{{ ansible_env.USER }}/.config/dunst/dunstrc"
+    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/sway"
+    state: link

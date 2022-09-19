@@ -1,3 +1,64 @@
-- name: Install Qutebrowser
-  debug: msg="dnf install qutebrowser"
-  when: ansible_facts['os_family'] == "RedHat"
+# Qutebrowser needs RPM fusion for the qt5-qtwebengine-freeworld,
+# which is required to play things like youtube videos.
+# The optional python-pip3 package adblock is to use Brave browsers adblocking
+
+- name: Importing (free) key
+  become: true
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020
+  when: ansible_distribution == "Fedora"
+
+- name: Importing (non-free) key
+  become: true
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-2020
+  when: ansible_distribution == "Fedora"
+
+- name: RPM Fusion
+  become: true
+  dnf:
+    pkg:
+      - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_version}}.noarch.rpm
+      - https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_version}}.noarch.rpm
+    state: present
+  when: ansible_distribution == "Fedora"
+
+- name: Install python pip3 for qutebrowser adblock
+  become: true
+  dnf:
+    name:
+      - python3-pip
+    state: present
+  when: ansible_distribution == "Fedora"
+
+- name: Install adblock package with pip3
+  become: false
+  ansible.builtin.pip:
+    name: adblock
+    executable: pip3
+  when: ansible_distribution == "Fedora"
+
+- name: Install qt5webengine (prop codecs)
+  become: true
+  dnf:
+    name:
+      - qt5-qtwebengine-freeworld
+    state: present
+  when: ansible_distribution == "Fedora"
+
+- name: Install qutebrowser package
+  become: true
+  dnf:
+    name:
+      - qutebrowser
+    state: present
+  when: ansible_distribution == "Fedora"
+
+- name: Symlink qutebrowser config
+  file:
+    src: "{{ ansible_env.PWD }}/roles/qutebrowser/files/qutebrowser"
+    # path: "/home/{{ ansible_env.USER }}/.config/dunst/dunstrc"
+    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/qutebrowser"
+    state: link

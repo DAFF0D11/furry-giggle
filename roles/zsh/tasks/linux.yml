@@ -1,0 +1,23 @@
+  # TODO Set zsh as shell?
+
+- name: Install zsh package
+  become: true
+  dnf:
+    name:
+      - zsh
+    state: present
+  when: ansible_distribution == "Fedora"
+
+- name: Symlink zshrc
+  file:
+    src: "{{ ansible_env.PWD }}/roles/zsh/files/zshrc"
+    # path: "/home/{{ ansible_env.USER }}/.config/dunst/dunstrc"
+    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.zshrc"
+    state: link
+
+- name: Symlink zsh config
+  file:
+    src: "{{ ansible_env.PWD }}/roles/zsh/files/zsh"
+    # path: "/home/{{ ansible_env.USER }}/.config/dunst/dunstrc"
+    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/zsh"
+    state: link

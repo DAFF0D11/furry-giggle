@@ -1,3 +1,16 @@
-- name: print facts
-  debug: msg="yas redhat/fedora'{{ ansible_os_family }}'"
-  when: ansible_facts['os_family'] == "RedHat"
+- name: Install mpv package and dependencies
+  become: true
+  dnf:
+    name:
+      - mpv
+      - mpv-mpris
+      - playerctl
+    state: present
+  when: ansible_distribution == "Fedora"
+
+- name: Symlink mpv directory
+  file:
+    src: "{{ ansible_env.PWD }}/roles/mpv/files/mpv"
+    # path: "/home/{{ ansible_env.USER }}/.rgignore"
+    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/mpv"
+    state: link

@@ -1,0 +1,54 @@
+- name: Install Packages
+  become: true
+  dnf:
+    name:
+      - dnf-plugins-core
+      - NetworkManager
+      - NetworkManager-tui
+      - NetworkManager-wifi
+      - net-tools
+      - fira-code-fonts
+      - breeze-cursor-theme
+      - gimp
+      - pcmanfm
+      - flameshot
+      - keepassxc
+      - pavucontrol
+      - pipewire
+      - alsa-utils
+      # - mpv
+      # - mpv-mpris
+      # - playerctl
+      # - terminus-fonts
+      # - gdouros-symbola-fonts
+      # - google-roboto-mono-fonts
+      # - python3-pip
+      # - zsh
+      # - lxappearance
+      # - dunst
+      # - ripgrep
+      - ffmpeg
+      - ffmpegthumbnailer
+      - curl
+      - fzf
+      - jq
+      - rsync
+      - trash-cli
+      - libtool
+      - unzip
+      - socat
+      - wget
+      - cmake
+      - tar
+      - htop
+      - age
+      - light
+      - wev
+      - pdf-tools
+      - ImageMagick
+      - bzip2
+      - jmtpfs
+      - fd-find
+      - util-linux-user
+    state: present
+  when: ansible_distribution == "Fedora"

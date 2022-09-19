@@ -1,3 +1,14 @@
-- name: Dunst
-  debug: msg="yas redhat/fedora'{{ ansible_os_family }}'"
-  when: ansible_facts['os_family'] == "RedHat"
+- name: Install dunst package
+  become: true
+  dnf:
+    name:
+      - dunst
+    state: present
+  when: ansible_distribution == "Fedora"
+
+- name: Symlink dunst config
+  file:
+    src: "{{ ansible_env.PWD }}/roles/dunst/files/dunst"
+    # path: "/home/{{ ansible_env.USER }}/.config/dunst/dunstrc"
+    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/dunst"
+    state: link

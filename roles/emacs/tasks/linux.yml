@@ -1,3 +1,87 @@
-- name: print facts
-  debug: msg="yas redhat/fedora'{{ ansible_os_family }}'"
-  when: ansible_facts['os_family'] == "RedHat"
+# Clone emacs from savannah
+# download dependencies
+# build
+# install
+
+# clone emacs config from github
+# symlink config
+
+- name: Check if Emacs executable exists
+  stat:
+    path: /usr/local/bin/emacs
+  register: stat_result
+
+
+- name: Clone Emacs config repository
+  become_user: "{{ ansible_env.USER }}"
+  git:
+    repo: https://github.com/daff0d11/emacs.git
+    dest: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/emacs"
+    clone: yes
+    depth: 1
+    update: yes
+
+- name: Install Emacs build dependencies
+  become: true
+  dnf:
+    name:
+      - make
+      - automake
+      - texinfo
+      - ImageMagick
+      - ImageMagick-devel
+      - gcc
+      - gcc-c++
+      - libgccjit
+      - libgccjit-devel
+      - libXpm-devel
+      - libjpeg-devel
+      - libjpeg-turbo-devel
+      - giflib-devel
+      - gnutls-devel
+      - libtiff-devel
+      - jansson-devel
+      - ncurses-devel
+      - mailx
+      - gtk3-devel
+      - webkit2gtk3-devel
+      - dnf-plugins-core
+    state: present
+  when:
+    - not stat_result.stat.exists
+    - ansible_distribution == "Fedora"
+
+- name: Clone Emacs source repository
+  become_user: "{{ ansible_env.USER }}"
+  git:
+    repo: https://git.savannah.gnu.org/git/emacs.git
+    dest: "/home/{{ ansible_env.USER }}/app/emacs"
+    clone: yes
+    depth: 1
+    update: yes
+  when:
+    - not stat_result.stat.exists
+
+- name: Run Emacs ./autogen.sh
+  become_user: "{{ ansible_env.USER }}"
+  ansible.builtin.shell:
+    chdir: "/home/{{ ansible_env.USER }}/app/emacs"
+    cmd: "./autogen.sh"
+  when:
+    - not stat_result.stat.exists
+
+- name: Run Emacs ./configure with flags
+  become_user: "{{ ansible_env.USER }}"
+  ansible.builtin.shell:
+    chdir: "/home/{{ ansible_env.USER }}/app/emacs"
+    cmd: "./configure --with-native-compilation --with-json=yes --with-wide-int --with-cairo --with-imagemagick --with-mailutils --with-xwidgets --with-pgtk"
+  when:
+    - not stat_result.stat.exists
+
+- name: Make and install Emacs
+  become: true
+  ansible.builtin.shell:
+    chdir: "/home/{{ ansible_env.USER }}/app/emacs"
+    cmd: "make -j $(nproc) install"
+  when:
+    - not stat_result.stat.exists

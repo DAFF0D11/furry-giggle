@@ -1,3 +1,6 @@
-- name: Setup Bin
-  debug: msg="symlink bin"
-  when: ansible_facts['os_family'] == "RedHat"
+- name: Symlink Bin
+  file:
+    src: "{{ ansible_env.PWD }}/roles/bin/files/bin"
+    # path: "/home/{{ ansible_env.USER}}/bin"
+    path: "~/tmp/newhome/bin"
+    state: link

@@ -1,13 +1,16 @@
-- name: Bootstrap development environment
+- name: Setup local environment
   hosts: localhost
-
-- roles:
+  roles:
     - base
-    - bin
-    - misc
-    - player
-    - terminal
-    - window-manager
-    - keyboard
-    - editor
-    - browser
+    # - interception-tools
+    # - emacs
+    # - bin
+    # - dunst
+    # - foot
+    # - imv
+    # - misc
+    # - mpv
+    # - qutebrowser
+    # - sway
+    # - waybar
+    # - zsh

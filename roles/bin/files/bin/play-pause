@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+CLIP=$(xclip -sel clip -o)
+
+plaympv(){
+ 2>/dev/null 1>&2  mpv --x11-name=video-player --pause --ytdl-format="bestvideo[height=?480]+bestaudio/best" $CLIP
+}
+
+case $CLIP in
+    *twitch.tv*)plaympv;;
+    *youtube.com*)plaympv;;
+    *vid.puffyan.us*)plaympv;;
+    *)echo not playable; notify-send "not playable";;
+esac
