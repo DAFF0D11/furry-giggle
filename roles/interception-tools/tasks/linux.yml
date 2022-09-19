@@ -92,12 +92,12 @@
 
 - name: Install udevmon settings
   become: true
-  shell: cp $HOME/fig/roles/interception-tools/udevmon.yaml /etc/udevmon.yaml
+  shell: cp $HOME/fig/roles/interception-tools/files/udevmon.yaml /etc/udevmon.yaml
   when: not check_intercept.stat.exists
 
 - name: Install udevmon service
   become: true
-  shell: cp $HOME/fig/roles/interception-tools/udevmon.service /etc/systemd/system/udevmon.service
+  shell: cp $HOME/fig/roles/interception-tools/files/udevmon.service /etc/systemd/system/udevmon.service
   when: not check_intercept.stat.exists
 
 - name: Enable udevmon service
