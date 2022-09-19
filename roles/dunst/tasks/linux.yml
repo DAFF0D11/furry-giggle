@@ -9,6 +9,5 @@
 - name: Symlink dunst config
   file:
     src: "{{ ansible_env.PWD }}/roles/dunst/files/dunst"
-    # path: "/home/{{ ansible_env.USER }}/.config/dunst/dunstrc"
-    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/dunst"
+    path: "/home/{{ ansible_env.USER }}/.config/dunst"
     state: link

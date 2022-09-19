@@ -1,3 +1,9 @@
+- name: Symlink user-dirs.dir
+  file:
+    src: "{{ ansible_env.PWD }}/roles/misc/files/user-dirs.dirs"
+    path: "/home/{{ ansible_env.USER }}/.config/user-dirs.dirs"
+    state: link
+
 - name: Install ripgrep package
   become: true
   dnf:
@@ -6,16 +12,8 @@
     state: present
   when: ansible_distribution == "Fedora"
 
-- name: Symlink user-dirs.dir
-  file:
-    src: "{{ ansible_env.PWD }}/roles/misc/files/user-dirs.dirs"
-    # path: "/home/{{ ansible_env.USER }}/.config/user-dirs.dirs"
-    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/user-dirs.dirs"
-    state: link
-
 - name: Symlink rgignore
   file:
     src: "{{ ansible_env.PWD }}/roles/misc/files/rgignore"
-    # path: "/home/{{ ansible_env.USER }}/.rgignore"
-    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.rgignore"
+    path: "/home/{{ ansible_env.USER }}/.rgignore"
     state: link

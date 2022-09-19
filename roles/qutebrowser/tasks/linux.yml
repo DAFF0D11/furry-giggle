@@ -59,6 +59,5 @@
 - name: Symlink qutebrowser config
   file:
     src: "{{ ansible_env.PWD }}/roles/qutebrowser/files/qutebrowser"
-    # path: "/home/{{ ansible_env.USER }}/.config/dunst/dunstrc"
-    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/qutebrowser"
+    path: "/home/{{ ansible_env.USER }}/.config/qutebrowser"
     state: link

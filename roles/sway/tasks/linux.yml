@@ -9,6 +9,5 @@
 - name: Symlink sway
   file:
     src: "{{ ansible_env.PWD }}/roles/sway/files/sway"
-    # path: "/home/{{ ansible_env.USER }}/.config/dunst/dunstrc"
-    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/sway"
+    path: "/home/{{ ansible_env.USER }}/.config/sway"
     state: link

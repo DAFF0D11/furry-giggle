@@ -9,6 +9,5 @@
 - name: Symlink foot config
   file:
     src: "{{ ansible_env.PWD }}/roles/foot/files/foot"
-    # path: "/home/{{ ansible_env.USER }}/.config/foot/foot.ini"
-    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/foot"
+    path: "/home/{{ ansible_env.USER }}/.config/foot"
     state: link

@@ -4,13 +4,13 @@
     - base
     # - interception-tools
     # - emacs
-    # - bin
-    # - dunst
-    # - foot
-    # - imv
-    # - misc
-    # - mpv
-    # - qutebrowser
-    # - sway
-    # - waybar
-    # - zsh
+    - bin
+    - dunst
+    - foot
+    - imv
+    - misc
+    - mpv
+    - qutebrowser
+    - sway
+    - waybar
+    - zsh

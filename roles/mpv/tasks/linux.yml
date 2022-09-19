@@ -11,6 +11,5 @@
 - name: Symlink mpv directory
   file:
     src: "{{ ansible_env.PWD }}/roles/mpv/files/mpv"
-    # path: "/home/{{ ansible_env.USER }}/.rgignore"
-    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/mpv"
+    path: "/home/{{ ansible_env.USER }}/.config/mpv"
     state: link

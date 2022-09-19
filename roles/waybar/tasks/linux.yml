@@ -9,6 +9,5 @@
 - name: Symlink waybar
   file:
     src: "{{ ansible_env.PWD }}/roles/waybar/files/waybar"
-    # path: "/home/{{ ansible_env.USER }}/.config/dunst/dunstrc"
-    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/waybar"
+    path: "/home/{{ ansible_env.USER }}/.config/waybar"
     state: link

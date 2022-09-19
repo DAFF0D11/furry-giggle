@@ -16,7 +16,7 @@
   become_user: "{{ ansible_env.USER }}"
   git:
     repo: https://github.com/daff0d11/emacs.git
-    dest: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/emacs"
+    dest: "/home/{{ ansible_env.USER }}/.config/emacs"
     clone: yes
     depth: 1
     update: yes

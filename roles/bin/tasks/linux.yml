@@ -1,6 +1,5 @@
 - name: Symlink Bin
   file:
     src: "{{ ansible_env.PWD }}/roles/bin/files/bin"
-    # path: "/home/{{ ansible_env.USER}}/bin"
-    path: "~/tmp/newhome/bin"
+    path: "/home/{{ ansible_env.USER }}/bin"
     state: link

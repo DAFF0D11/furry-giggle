@@ -11,13 +11,11 @@
 - name: Symlink zshrc
   file:
     src: "{{ ansible_env.PWD }}/roles/zsh/files/zshrc"
-    # path: "/home/{{ ansible_env.USER }}/.config/dunst/dunstrc"
-    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.zshrc"
+    path: "/home/{{ ansible_env.USER }}/.zshrc"
     state: link
 
 - name: Symlink zsh config
   file:
     src: "{{ ansible_env.PWD }}/roles/zsh/files/zsh"
-    # path: "/home/{{ ansible_env.USER }}/.config/dunst/dunstrc"
-    path: "/home/{{ ansible_env.USER }}/tmp/newhome/.config/zsh"
+    path: "/home/{{ ansible_env.USER }}/.config/zsh"
     state: link
