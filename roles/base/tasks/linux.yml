@@ -28,7 +28,6 @@
       # - dunst
       # - ripgrep
       - ffmpeg
-      - ffmpegthumbnailer
       - curl
       - fzf
       - jq
