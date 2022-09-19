@@ -27,7 +27,6 @@
       # - lxappearance
       # - dunst
       # - ripgrep
-      - ffmpeg
       - curl
       - fzf
       - jq
