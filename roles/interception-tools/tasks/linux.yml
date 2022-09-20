@@ -12,9 +12,13 @@
       - systemd-devel
       - yaml-cpp-devel
       - boost-devel
-      - libXrandr-devel
+      - gcc-c++
+      # - libXrandr-devel
+
     state: present
-  when: ansible_distribution == "Fedora"
+  when:
+    - ansible_distribution == "Fedora"
+    - not check_intercept.stat.exists
 
 - name: Setup interceptor build
   shell: |
