@@ -54,6 +54,11 @@
     chdir: "{{ user_home }}/fig/roles/interception-tools/files/dual-function-keys"
   when: not check_dualfunctionkeys.stat.exists
 
+- name: Install dual function keys settings
+  become: true
+  shell: "cp {{config_dir}}/roles/interception-tools/files/dual-function-keys.yaml /etc/dual-function-keys.yaml"
+  when: not check_dualfunctionkeys.stat.exists
+
 - name: Check for space2meta
   stat:
     path: /usr/local/bin/space2meta
