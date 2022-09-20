@@ -1,17 +1,17 @@
-- name: Setup local environment
+- name: Setup Workstation
   hosts: localhost
   roles:
     - setup
     - base
-    - interception-tools
-    - emacs
     - bin
-    - dunst
-    - foot
-    - imv
-    - misc
-    - mpv
-    - qutebrowser
     - sway
     - waybar
+    - foot
+    - qutebrowser
+    - mpv
+    - dunst
+    - imv
+    - misc
     - zsh
+    - interception-tools
+    - emacs
