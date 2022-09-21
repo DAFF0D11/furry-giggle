@@ -62,5 +62,6 @@
       - jmtpfs
       - fd-find
       - util-linux-user
+      - iwl7260-firmware
     state: present
   when: ansible_distribution == "Fedora"
