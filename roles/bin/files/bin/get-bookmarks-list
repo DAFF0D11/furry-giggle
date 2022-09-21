@@ -1,9 +1,0 @@
-#!/bin/bash
-# Do i even use this?
-# Very dirty, dont judge
-# BOOKMARKS_FILE=~/vlt/org/bookmarks.org
-# raw=$(cat "$BOOKMARKS_FILE" | grep "^* ")
-# # raw=$(cat ~/vlt/org/b.org | grep "^* " | cut -d " " -f2-)
-# urls=$(echo "$raw" | cut -d "[" -f3- | cut -d "]" -f1)
-# titles=$(echo "$raw" | cut -d "[" -f4- | cut -d "]" -f1)
-# paste <(echo "$titles") <(echo "$urls") --delimiters '\t'

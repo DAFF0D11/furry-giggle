@@ -3,7 +3,7 @@
 # Select from all, or a specific directory.
 # Also displays watch history of anything played with "play" command.
 
-VIDEO_PATH="$HOME/dat/vid/"
+VIDEO_PATH="$HOME/vid/"
 
 WATCH_HISTORY="$HOME/pea/mpv/watch_history"
 

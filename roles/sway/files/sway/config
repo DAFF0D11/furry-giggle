@@ -1,10 +1,7 @@
 set $mod Mod4
 set $term foot
 
-# font pango:terminus 13
-# font pango:monospace 11
-set $font "Fira Code"
-font pango:$font 11
+font pango:Fira Code 11
 
 seat * hide_cursor when-typing enable
 
@@ -14,9 +11,9 @@ xwayland disable
 # gaps outer 14
 # gaps bottom 0
 
-output "*" background "~/.cache/wallpaper" fill
+# output "*" background "~/.cache/wallpaper" fill
 # output * bg ~/dat/img/wallpaper/px-wallhaven-l3y8ql.jpg fill
-# output * bg #000000 solid_color
+output * bg "#000000" solid_color
 
 input type:keyboard {
 repeat_delay 230
@@ -32,9 +29,9 @@ exec --no-startup-id dunst
 
 # Idle lock
 exec swayidle -w \
-timeout 900 'swaylock -f -c 000000 -i $HOME/dat/img/wallpaper/wallhaven-vm5jyl.png' \
+timeout 900 'swaylock -f -c 000000 -i $HOME/img/wallpaper/wallhaven-vm5jyl.png' \
 timeout 1500 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-before-sleep 'swaylock -f -c 000000 -i $HOME/dat/img/wallpaper/wallhaven-vm5jyl.png'
+before-sleep 'swaylock -f -c 000000 -i $HOME/img/wallpaper/wallhaven-vm5jyl.png'
 
 set $laptop eDP-1
 bindswitch --reload --locked lid:on  output $laptop disable
@@ -60,6 +57,7 @@ for_window [app_id="wev" ]     floating enable
 for_window [app_id="float" ]   floating enable
 for_window [app_id="thunar" ]  floating enable
 for_window [app_id="pcmanfm" ] floating enable
+for_window [app_id="thunar" ] floating enable
 for_window [class="float" ]    floating enable
 for_window [title="capture" ]  floating enable; move to workspace current
 
@@ -86,22 +84,6 @@ bindsym --border button2 kill
 # Toggle the current focus between tiling and floating mode
 bindsym Mod4+Shift+f floating toggle
 
-# This is weird.
-# Besides browsers, I never use S-m or S-n.
-# Use jq and wtype to either switch browser tabs
-# or window containers (focus next) depending on
-# which app_id im focused on. This unifies commands,
-# but will be weird af when you have multiple continers
-# on a browsers workspace
-# bindsym Mod4+n exec "wciao prev"
-# bindsym Mod4+m exec "wciao next"
-# bindsym Mod4+w exec "wciao killtab"
-# bindsym Mod4+t exec "wciao newtab"
-# bindsym Control+z exec "wciao tst"
-# This really needs a way to pass through so it doesnt infinity loop
-# bindsym Control+j exec "wciao next"
-# bindsym Control+k exec "wciao prev"
-
 bindsym Mod4+m focus next
 bindsym Mod4+n focus prev
 
@@ -118,15 +100,13 @@ bindsym Mod4+Control+t layout tabbed
 bindsym Mod4+r exec --no-startup-id "fxmenu float 400x400 fx-launch"
 bindsym Mod4+semicolon exec --no-startup-id "fxmenu float 400x200 fx-sway-switch"
 
-
-# bindsym Control+semicolon exec "foot-menu fzf-search 500x10"
 bindsym Control+semicolon exec "fxmenu float 900x300 fx-search"
 bindsym Control+apostrophe exec "fxmenu float 900x300 fx-search -n"
 
 bindsym Mod4+c exec --no-startup-id "em capture"
 bindsym Mod4+backslash exec --no-startup-id "em term"; workspace 3:EMACS
 bindsym Control+Shift+m exec "clipman clear --all"
-bindsym Control+m exec "foot-menu fzf-clipmenu 900x300"
+bindsym Control+m exec "fxmenu float 900x300 fx-clipman"
 bindsym Control+slash exec "fxmenu float 500x300 fx-shuffler"
 
 # move the currently focused window to the scratchpad
@@ -193,26 +173,26 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+# mode "resize" {
+#     # left will shrink the containers width
+#     # right will grow the containers width
+#     # up will shrink the containers height
+#     # down will grow the containers height
+#     bindsym $left resize shrink width 10px
+#     bindsym $down resize grow height 10px
+#     bindsym $up resize shrink height 10px
+#     bindsym $right resize grow width 10px
 
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+#     # Ditto, with arrow keys
+#     bindsym Left resize shrink width 10px
+#     bindsym Down resize grow height 10px
+#     bindsym Up resize shrink height 10px
+#     bindsym Right resize grow width 10px
 
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+#     # Return to default mode
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+# }
 # bindsym $mod+o mode "resize"
 
 # Shutdown menu
@@ -231,7 +211,6 @@ mode "$shutdown" {
 }
 bindsym Mod4+Shift+s mode "$shutdown"
 
-
 set $hotmenu Launch:(l) | Kill Process:(k) |  Emacs:(e) | Qute:(q) | Capture:(c) | Play:(p)
 mode "$hotmenu" {
     bindsym k exec --no-startup-id "fxmenu float 1200x400 fx-kill-process", mode "default"
@@ -239,14 +218,13 @@ mode "$hotmenu" {
     bindsym q exec --no-startup-id "qutebrowser", mode "default", mode "default"
     bindsym p exec --no-startup-id "fxmenu float 900x300 fx-play all", mode "default"
     bindsym c exec --no-startup-id "em capture",mode "default", mode "default"
-    bindsym e exec --no-startup-id "em emacs",mode "default", mode "default"
+    bindsym e exec --no-startup-id "emacsclient -c -a '' ",mode "default", mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym F6 mode "$hotmenu"
-
 
 # Status Bar:
 bar {
@@ -281,12 +259,16 @@ client.unfocused            $bg        $bg         $ia
 client.focused_inactive     $bg        $bg         $ac
 client.urgent               $rd        $rd         $tx
 
-# include /etc/sway/config.d/*
-
 exec_always {
     gsettings set org.gnome.desktop.interface cursor-theme "Breeze Light"
     gsettings set org.gnome.desktop.interface cursor-size 24
     gsettings set org.gnome.desktop.interface gtk-theme oomox-horizon-dark
     gsettings set org.gnome.desktop.interface font-name "Fira Sans 11"
     gsettings set org.gnome.desktop.interface monospace-font-name "Fira Code 11"
+
+    # I need to experiment with this.
+    # gsettings set org.gnome.desktop.interface scaling-factor 1.5
+    # gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+
+
 }

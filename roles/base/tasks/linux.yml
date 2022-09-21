@@ -25,12 +25,13 @@
   become: true
   dnf:
     name:
-      - ffmpeg
-      - ffmpegthumbnailer
-      - dnf-plugins-core
       - NetworkManager
       - NetworkManager-tui
       - NetworkManager-wifi
+      - iwl7260-firmware
+      - ffmpeg
+      - ffmpegthumbnailer
+      - dnf-plugins-core
       - net-tools
       - fira-code-fonts
       - breeze-cursor-theme
@@ -62,6 +63,5 @@
       - jmtpfs
       - fd-find
       - util-linux-user
-      - iwl7260-firmware
     state: present
   when: ansible_distribution == "Fedora"

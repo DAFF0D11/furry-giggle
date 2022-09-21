@@ -1,3 +1,0 @@
-#!/bin/sh
-
-sxiv -t -r -q -o ~/dat/img/wallpaper/ | xargs feh --bg-scale

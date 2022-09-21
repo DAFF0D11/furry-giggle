@@ -1,5 +1,5 @@
 #!/bin/sh
-bookmarks=~/pea/org/agenda/bookmarks.org
+bookmarks=~/org/agenda/bookmarks.org
 case $1 in
 	term) emacsclient -e '(daf/evil-insert-vterm)';;
 	capture) emacsclient --alternate-editor='' --no-wait --eval "(make-capture-frame)" ;;

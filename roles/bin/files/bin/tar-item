@@ -1,3 +1,0 @@
-#!/bin/sh
-
-tar -cvz "$1" > "$2".tar.gz

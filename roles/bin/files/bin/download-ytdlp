@@ -7,8 +7,8 @@
 
 # DEPENDENCIES: yt-dlp, dmenu, fd(fd-find)
 
-VIDEO_PATH="$HOME/dat/vid/"
-MUSIC_PATH="$HOME/dat/mus/"
+VIDEO_PATH="$HOME/vid/"
+MUSIC_PATH="$HOME/mus/"
 FILE_NAME_FORMAT="%(channel)s__%(title)s.%(ext)s"
 
 VIDEO_ARCHIVE="$VIDEO_PATH/video_archive"

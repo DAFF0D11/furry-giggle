@@ -64,10 +64,11 @@ export MOZ_ENABLE_WAYLAND=1
 # export BROWSER=brave-browser
 
 export PATH=$HOME/fig/bin:$PATH
-export PATH=$HOME/src/fxmenu/scripts:$PATH
-# export PATH=$HOME/fig/dafmenu/scripts:$PATH
 export PATH=$HOME/pea/sbin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+
+# export PATH=$HOME/src/fxmenu/scripts:$PATH
+# export PATH=$HOME/fig/dafmenu/scripts:$PATH
 
 export NODEJS_HOME=$HOME/src/lang/node
 export PATH=$PATH:$NODEJS_HOME/bin
@@ -83,6 +84,30 @@ alias mv="mv -iv"
 alias mkdir="mkdir -vp "
 alias e='emacsclient -t'
 alias rmm="trash"
+
+ex(){
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   unzstd $1    ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
 
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 

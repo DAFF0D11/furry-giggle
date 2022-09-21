@@ -3,14 +3,20 @@
     path: /usr/local/bin/emacs
   register: stat_result
 
-- name: Clone Emacs config repository
-  become_user: "{{ user }}"
-  git:
-    repo: https://github.com/daff0d11/emacs.git
-    dest: "{{ user_home }}/.config/emacs"
-    clone: yes
-    depth: 1
-    update: yes
+# - name: Clone Emacs config repository
+#   become_user: "{{ user }}"
+#   git:
+#     repo: https://github.com/daff0d11/emacs.git
+#     dest: "{{ user_home }}/.config/emacs"
+#     clone: yes
+#     depth: 1
+#     update: yes
+
+- name: Symlink Emacs config
+  file:
+    src: "{{ config_dir }}/roles/emacs/files/emacs"
+    path: "{{ user_home }}/.config/emacs"
+    state: link
 
 - name: Install Emacs build dependencies
   become: true
